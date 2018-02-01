@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CaroKpa</title>
+<script src="tests.js"></script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="//www.google.com/jsapi"></script>
+<script type="text/javascript" src="youtubeAPI.js"></script>
+<!--
+<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+-->
+
+	<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=onJSClientLoad"></script> 
+
+
+
+<link rel="stylesheet" type="text/css" href="tests.css">
+</head>
+<body onload="initURL();">
+
+<div class="sidenav" id="sidegif"></div>
+<div class="sidenavi" id="sidegif2"></div>
+
+<div class="main" id="maindiv">
+<h1 style="text-align:center;color: purple;">Pagina Test</h1>
+
+<div id= "login-container" class="pre-auth"> <a href="#" id="login-link">LOGIN to Youtube</a>
+</div>
+
+<div id="post-auth" class="post-auth">
+<form id="videoSearcherBar" class="videoSearcherBar" action='#'>
+<input type="busqueda" name="busqueda" id="videoSearchQuery" value='' placeholder="Escribe tu busqueda de video Youtube"></input>
+<input type="submit" id="submitDeYoutube" value="Buscar!"></input> 
+</form>
+</div>
+
+<div id="videoPlayerDiv" class="videoPlayerDiv" style='position: relative; width: 100%; height: 0px; padding-bottom: 60%;'>
+<iframe id="ytplayer" type="text/html" style="position: absolute; width: 100%; height: 100%;"
+  src=""
+  frameborder="0"></iframe>
+</div>
+
+<p id="demo">Duck</p>
+<input type="button" id="button1" onclick="alternate()" value="Transform this Duck!"></input>
+
+
+<p id="automod"> </p>
+</div>
+<div class='main'>
+	<input type="text" id="autodemowrite" value="" onkeypress="detectarenter(event)" >
+    <br><br>
+    <button onclick="borramod('automod')">BORRAR</button>
+    <button onclick="permeador()">Dejar Posteado</button>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title>User management</title>
+</head>
+<body>
+	<h1> User Manage </h1>
+
+	<div>
+		<form id="logon" method="post">
+			Nombre: <br>
+				<input type="nombre" name="nombre" value="" placeholder="Tu nombre">
+				<br><br>
+				Password: <br>
+				<input type="password" name="password" value="" placeholder="Tu pass">
+				<br><br>
+
+				<input type="submit" id="loginButton" value="Login">
+
+				<input type="submit" id="signupButton" value="SignUp">
+		</form>
+	</div>
+
+<script type="text/javascript">
+const formLogin = document.getElementById('logon')
+var botonLogIn = document.getElementById("loginButton")
+var botonSignUp = document.getElementById("signupButton")
+/*
+botonLogIn.addEventListener('click', event => {
+formLogin.action="/signin"
+  })
+botonSignUp.addEventListener('click', event => {
+formLogin.action="/signup"
+  })
+
+
+$(formLogin).submit(function(event){
+	event.preventDefault();
+	var formData = `{"nombre": "`+ formLogin.nombre.value + `", "password": "`+ formLogin.password.value + `"}`
+
+$.ajax({
+  type: "POST",
+  url: formLogin.action,
+  data: formData,
+  dataType: 'application/json'
+})
+
+//	$.post(formLogin.action, formData)
+	.done(dator => {
+		localStorage.setItem('token', dator.token)
+	})
+
+})
+
+*/
+
+formLogin.addEventListener('submit', function(event){
+	eventer.stopPropagation();
+});
+
+botonLogIn.addEventListener('click', event => {
+var formData = `{"nombre": "`+ formLogin.nombre.value + `", "password": "`+ formLogin.password.value + `"}`
+  event.preventDefault()
+
+  fetch('/signin', {
+  	headers: {
+    'Accept': 'application/json',
+    'Content-Type':'application/json'},
+    method: 'POST',
+    body: formData,
+    redirect: 'follow'
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.token) {
+      alert(data.message + "TOKEN: " + data.token)
+      localStorage.setItem('token', data.token)
+      window.location = "/"
+    } else {
+      alert("sin auth")
+    };
+})
+})
+
+botonSignUp.addEventListener('click', event => {
+	var formData = `{"nombre": "`+ formLogin.nombre.value + `", "password": "`+ formLogin.password.value + `"}`
+	event.preventDefault()
+
+  fetch('/signup', {
+  	headers: {
+    'Accept': 'application/json',
+    'Content-Type':'application/json'},
+    method: 'POST',
+    body: formData,
+    redirect: 'follow'
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.token) {
+      alert(data.message + "TOKEN: " + data.token)
+      localStorage.setItem('token', data.token)
+      window.location = "/"
+    } else {
+      alert("error en registro")
+    };
+})
+  
+})
+</script>
+
+
+
+</body>
+</html>
